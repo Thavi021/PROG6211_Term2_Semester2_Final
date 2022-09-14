@@ -1,0 +1,1011 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package kieran.m;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Thaveshan Naidoo
+ */
+public class KieranM {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+        
+       Scanner kb = new Scanner(System.in);
+      
+        System.out.print("BRIGHT FUTURE TECHNOLOGIES APPLICATION");
+        
+        System.out.print("\n**************************************");
+        
+     
+        System.out.print("\nEnter (1) to launch menu or any other key to exit: ");
+        
+        
+        Products.numberEntered = kb.next();
+        
+        Products.DisplayMenu();
+        
+        if ("1".equals(Products.numberEntered)) 
+        {
+           Products.CaptureNewProduct();
+        }
+        else 
+        {
+            System.exit(0);
+            
+        }  
+    }
+    
+}
+
+
+class Products {
+
+    
+    public static String numberEntered,secondaryNum;
+   
+    public static Scanner kb = new Scanner(System.in);
+    
+    public static String productCode , productName,productWarrantyOption,
+                stockLevel,supplierName,actualProductWarranty,productCategoryDesc;
+    
+    public static    double productPrice;
+    
+    public static    int productCategory;
+    
+   public static String DisplayMenu (){
+    
+        
+        if ("1".equals(numberEntered)) {
+           
+     
+           System.out.print("\nPlease select one of the following menu items:");
+           System.out.print("\n(1) Capture a new product."); 
+           System.out.print("\n(2) Search for a product.");
+           System.out.print("\n(3) Update a product.");
+           System.out.print("\n(4) Delete a product.");
+           System.out.print("\n(5) Print report.");
+           System.out.print("\n(6) Search for a product.");
+           System.out.print("\n*******************************************");
+           System.out.print("\n ");
+         
+           numberEntered = kb.next();
+           
+           secondaryNum=numberEntered;
+           
+            if ("1".equals(numberEntered)) 
+            {
+             Products.CaptureNewProduct();
+            }
+            
+            else {
+            if ("2".equals(secondaryNum)) 
+            {
+                System.out.print("\nPlease Enter the product code to search:");
+                Products.productCode= kb.next();
+                searchProduct(productCode);
+            }
+            
+            else
+            {
+             if ("4".equals(secondaryNum)) 
+             {
+                System.out.print("\nPlease Enter the product code of the product you want deleted:");
+                Products.productCode= kb.next();  
+                 deleteProduct(productCode);
+             }
+             
+             else
+             {
+                 if ("3".equals(secondaryNum)) 
+                 {
+                     updateProduct(productCode);
+                 }
+             
+             else
+                 {
+                     if("5".equals(secondaryNum))
+                     {
+                         Products.Report();
+                     }
+                 }
+              }     
+            }
+            
+          } 
+        }
+        return numberEntered;
+    }
+   public static String redisplayCategoryOptions(){
+       
+        System.out.print("\nIncorrect Category");
+           
+        System.out.print("\nSelect The Product Category:");
+        System.out.print("\nDesktop Computer - 1");
+        System.out.print("\nLaptop - 2");
+        System.out.print("\nTablet - 3");
+        System.out.print("\nPrinter - 4");
+        System.out.print("\nGaming Console - 5");
+        System.out.print("\n");
+        
+        productCategory = kb.nextInt();
+        
+       
+        if (1==productCategory )
+        {
+        productCategoryDesc= "Desktop Computer";
+        
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+            //if statement to set warranty period 
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }
+            
+        System.out.print("\nEnter the price for "+productName+" >>R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+" >>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+        saveProduct();
+        
+        numberEntered = kb.next(); 
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+                System.exit(0);
+        }
+        
+        }
+        
+        if (2==productCategory )
+        {
+            productCategoryDesc="Laptop";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+            
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }
+            
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+" >>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+         
+        saveProduct();
+        
+        numberEntered = kb.next();  
+    
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+                System.exit(0);
+        }
+        }
+        
+        if (3==productCategory )
+        {
+            productCategoryDesc="Tablet";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+         
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }      
+            
+        System.out.print("\nEnter the price for "+productName+">>");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+">>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+       
+         
+        saveProduct();
+        
+        numberEntered = kb.next(); 
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+                System.exit(0);
+        }
+        } 
+    
+        if (4==productCategory )
+        {
+            productCategoryDesc="Printer";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+          
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+" >>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+   
+         
+       saveProduct();
+       
+        numberEntered = kb.next();  
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+              
+        }else
+        {
+                System.exit(0);
+        }
+        }
+        
+        
+        if (5==productCategory )
+        {
+            productCategoryDesc="Gaming Console";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+         
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }
+            else 
+            {
+               actualProductWarranty = "2 Year";  
+            }
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+" >>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+       
+         
+        saveProduct();
+        
+        numberEntered = kb.next();
+        
+            if ("1".equals(numberEntered)) 
+            {
+              DisplayMenu();
+            }
+            else
+            {
+                System.exit(0);
+            }
+        }
+        return numberEntered;
+       
+   }
+    
+    public static String CaptureNewProduct(){    
+      
+        System.out.print("\nCAPTURE A NEW PRODUCT");
+        System.out.print("\n**********************");
+        
+        
+        System.out.print("\nEnter the product code: ");
+        productCode = kb.next();
+        
+        
+        System.out.print("\nEnter the product name: ");
+        productName = kb.next();
+        
+        
+        System.out.print("\nSelect the product category:");
+        System.out.print("\nDesktop Computer - 1");
+        System.out.print("\nLaptop - 2");
+        System.out.print("\nTablet - 3");
+        System.out.print("\nPrinter - 4");
+        System.out.print("\nGaming Console - 5");
+        System.out.print("\n ");
+        productCategory = kb.nextInt();
+        
+       
+        if (1==productCategory)
+        {
+            productCategoryDesc="Desktop Computer";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        productWarrantyOption = kb.next();
+        
+           
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+" >>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+        numberEntered = kb.next(); 
+        
+        
+        saveProduct();
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+              System.exit(0);
+        }
+        }else 
+        {
+        
+      
+        if (2==productCategory )
+        {
+            productCategoryDesc="Laptop";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+          
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }        
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+" >>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+      
+        
+        saveProduct();
+        
+        numberEntered = kb.next(); 
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+                System.exit(0);
+        }
+        }
+        else 
+        {
+            
+       
+        if (3==productCategory )
+        {
+            productCategoryDesc="Tablet";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+        
+        productWarrantyOption = kb.next();
+        
+           
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+               
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            } 
+            
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+">>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+         
+         
+        saveProduct();
+        
+        numberEntered = kb.next();   
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+             System.exit(0);
+        }
+        }else
+        {
+            
+        
+        if (4==productCategory )
+        {
+            productCategoryDesc="Printer";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+       
+        productWarrantyOption = kb.next();
+        
+            
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            }        
+            
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+">>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+         
+         
+        saveProduct();
+        
+        numberEntered = kb.next();   
+        
+        if ("1".equals(numberEntered)) 
+        {
+              DisplayMenu();
+        }else
+        {
+             System.exit(0);
+        }
+        }
+        else
+        {
+        
+        
+        
+        if (5==productCategory )
+        {
+            productCategoryDesc="Gaming Console";
+            
+        System.out.print("\nProduct Category >> "+ productCategory);
+        
+        System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+      
+        productWarrantyOption = kb.next();
+        
+           
+            if ("1".equals(productWarrantyOption)) 
+            {
+               actualProductWarranty = "6 Months"; 
+            }else 
+            {
+               actualProductWarranty = "2 Year";  
+            } 
+            
+        System.out.print("\nEnter the price for "+productName+" >> R");
+        
+        productPrice = kb.nextDouble();
+        
+        System.out.print("\nEnter the stock level for "+productName+" >>");
+        
+        stockLevel = kb.next();
+        
+        System.out.print("\nEnter the supplier for "+productName+">>");
+        
+        supplierName = kb.next();
+        
+        System.out.print("\nProduct details has been saved successfully! ! !");
+        
+        System.out.print("\nEnter (1) to launch menu or any other key to exit");
+        
+          
+        saveProduct();
+        
+        numberEntered = kb.next();
+        
+            if ("1".equals(numberEntered)) 
+            {
+              DisplayMenu();
+              
+            }else
+            {
+                System.exit(0);
+            }
+        } 
+        else 
+        {
+            if ((1!=productCategory )||(2!=productCategory )
+                ||(3!=productCategory )||(4!=productCategory )
+                ||(5!=productCategory )) 
+            {
+                redisplayCategoryOptions();
+            }
+        }
+        } 
+        }
+        }
+        }
+        return numberEntered;
+        }
+    
+    
+      public static void searchProduct(String sampleProductCode){
+        
+        
+        boolean found = true;
+        
+        for (int i = 0; i < ArrayListClass.productCodes.size(); i++) 
+        {
+            
+            if (sampleProductCode.equals(ArrayListClass.productCodes.get(i))) 
+            {
+                System.out.print("\n***********************************************");
+                System.out.print("\nPRODUCT SEARCH RESULTS");
+                System.out.print("\n***********************************************");
+                System.out.print("\nPRODUCT CODE:\t \t "+ ArrayListClass.productCodes.get(i));
+                System.out.print("\nPRODUCT NAME:\t \t "+ArrayListClass.productNames.get(i));
+                System.out.print("\nPRODUCT WARRANTY:\t "+ArrayListClass.actualProductWarranty.get(i));
+                System.out.print("\nPRODUCT CATEGORY:\t "+ArrayListClass.productCategoryDesc.get(i));
+                System.out.print("\nPRODUCT Price:\t\t R"+ArrayListClass.productPrice.get(i));
+                System.out.print("\nPRODUCT STOCK LEVELS:\t "+ArrayListClass.stockLevels.get(i));
+                System.out.print("\nPRODUCT SUPPLIER:\t "+ArrayListClass.supplierNames.get(i));
+                System.out.print("\n***********************************************");
+                System.out.print("\n");
+                
+                System.out.println("\nEnter (1) to launch menu or any other key to exit");
+                
+                Products.numberEntered= Products.kb.next();
+                
+                if ("1".equals(Products.numberEntered))
+                {
+                       Products.DisplayMenu();
+                }
+                    else
+                    {
+                        System.exit(0);
+                    } 
+            }
+            else
+            {
+                
+                if (!sampleProductCode.equals(ArrayListClass.productCodes.get(i))) 
+                {
+                        found= false;
+                }
+            }
+        }
+       
+        if (found==false) 
+        {
+            System.out.print("\nThe Product cannot be located. Invalid Product");
+            
+            System.out.println("\nEnter (1) to launch menu or any other key to exit");
+           
+            Products.numberEntered= Products.kb.next();
+                
+            if ("1".equals(Products.numberEntered)) 
+            {
+                Products.DisplayMenu();
+            }else
+            {
+                System.exit(0);
+            } 
+
+        } 
+    }
+       
+      
+      
+      
+    public static void saveProduct(){
+
+        ArrayListClass.productCodes.add(Products.productCode);
+ 
+        ArrayListClass.productNames.add(Products.productName);
+       
+        ArrayListClass.stockLevels.add(Products.stockLevel);
+      
+        ArrayListClass.supplierNames.add(Products.supplierName);
+        
+        ArrayListClass.actualProductWarranty.add(Products.actualProductWarranty);
+      
+        ArrayListClass.productCategoryDesc.add(Products.productCategoryDesc);
+        
+        ArrayListClass.productPrice.add(Products.productPrice);
+        
+    } 
+    public static void deleteProduct(String sampleProductCode){
+      
+        
+        boolean found = true;
+        
+        System.out.println("Are you sure you want to delete : "+ sampleProductCode+" IF YES press 1 ,IF NO press any other key ");
+        
+        numberEntered = kb.next();
+        
+        if ("1".equals(Products.numberEntered)) 
+        {
+            
+        for (int i = 0; i < ArrayListClass.productCodes.size(); i++) 
+        {
+          
+            if (sampleProductCode.equals(ArrayListClass.productCodes.get(i)))
+            {
+                ArrayListClass.productCodes.remove(Products.productCode);
+                
+                 ArrayListClass.productNames.remove(Products.productName);
+          
+                ArrayListClass.stockLevels.remove(Products.stockLevel);
+               
+                ArrayListClass.supplierNames.remove(Products.supplierName);
+           
+                 ArrayListClass.actualProductWarranty.remove(Products.actualProductWarranty);
+             
+                 ArrayListClass.productCategoryDesc.remove(Products.productCategoryDesc);
+           
+                 ArrayListClass.productPrice.remove(Products.productPrice); 
+                 
+                 System.out.println("Products deleted!");
+                 
+                 System.out.println("\nEnter (1) to launch menu or any other key to exit");
+                 
+                Products.numberEntered= Products.kb.next();
+                if ("1".equals(Products.numberEntered)) 
+                {
+                       Products.DisplayMenu();
+                }else
+                {
+                        System.exit(0);
+                } 
+            }
+            else
+            {
+              
+                if (!sampleProductCode.equals(ArrayListClass.productCodes.get(i)))
+                {
+                        found= false;
+                }  
+            }
+        }
+    }
+      
+        if (found==false)
+        {
+            System.out.print("\nThe Product cannot be located. Invalid Product");
+           
+            System.out.println("\nEnter (1) to launch menu or any other key to exit");
+            
+            Products.numberEntered= Products.kb.next();
+           
+            if ("1".equals(Products.numberEntered)) 
+            {
+                       Products.DisplayMenu();
+            }else
+            {
+                        System.exit(0);
+            } 
+
+        } 
+}
+    
+    
+    public static void updateProduct(String sampleProductCode){
+       
+        boolean found = false;
+       
+        String yesNoValue;
+       
+        
+        int indexOfRecord=0;
+      
+        System.out.print("\nPlease enter the product code you want to update : ");
+       
+        productCode = kb.next();
+       
+   
+      
+        for (int i = 0; i < ArrayListClass.productCodes.size(); i++) 
+        {
+           
+            if (sampleProductCode.equals(ArrayListClass.productCodes.get(i)))
+            {
+               found = true;
+               
+               indexOfRecord= i;
+               
+            }
+            else 
+            {
+                found = false;
+            }
+            }
+            if (found==true) 
+            {
+                
+                System.out.print("\nUpdate the warranty? (y) Yes, (n) No");
+                
+                yesNoValue =kb.next();
+                
+                if ("y".equals(yesNoValue))
+                {
+                
+                    
+                  System.out.print("\nIndicate the product warranty. Enter (1) for 6 months or any other key for 2 years.");
+                 
+                  productWarrantyOption = kb.next();  
+                  
+                  if ("1".equals(productWarrantyOption)) 
+                  {
+                    actualProductWarranty = "6 Months"; 
+                    
+                  
+                   
+                    ArrayListClass.actualProductWarranty.set(indexOfRecord,actualProductWarranty);
+                  
+                  }
+                  else 
+                  {
+                   actualProductWarranty = "2 Year";
+                   
+                   //updates product waranty arraylist
+                    ArrayListClass.actualProductWarranty.set(indexOfRecord,actualProductWarranty);
+
+                  }      
+                }
+            
+                    
+                System.out.print("\nUpdate the Price? (y) Yes, (n) No:" );
+                   
+                yesNoValue =kb.next();
+                   
+                if ("y".equals(yesNoValue)) 
+                {
+                  
+                        productPrice=0;
+                    
+                        System.out.print("\nEnter new price for "+ArrayListClass.productNames.get(indexOfRecord)+": R");
+                      
+                        productPrice = kb.nextDouble();
+              
+                       
+                        ArrayListClass.productPrice.set(indexOfRecord, productPrice);    
+                    }
+                   
+              
+                System.out.print("\nUpdate the stock level? (y) Yes, (n) No:");
+               
+                yesNoValue = kb.next();
+               
+                if ("y".equals(yesNoValue)) 
+                {
+                  
+                    System.out.print("Enter New stock value:");
+                 
+                    stockLevel=kb.next();
+                   
+                    ArrayListClass.stockLevels.set(indexOfRecord, stockLevel);
+                }
+                
+                System.out.print("\nUpdated Successfully!");
+             
+                System.out.println("\nEnter (1) to launch menu or any other key to exit");
+                Products.numberEntered= Products.kb.next();
+                if ("1".equals(Products.numberEntered))
+                {
+                       Products.DisplayMenu();
+                }
+                else
+                {
+                        System.exit(0);
+                } 
+                    
+                
+        }
+            else
+            {
+                System.out.println("NOT FOUND!");
+            }
+        }
+    
+    public static void Report()
+    {
+         for (int i = 0; i < ArrayListClass.productCodes.size(); i++)
+         {
+     
+        System.out.println("************************************");
+        System.out.println("PRINT REPORT PRODUCT");
+        System.out.println("************************************");
+        System.out.println("PRODUCT CODE:" + ArrayListClass.productCodes.get(i));
+        System.out.println("PRODUCT NAME:" + ArrayListClass.productNames.get(i));
+        System.out.println("PRODUCT WARRANTY:" + ArrayListClass.actualProductWarranty.get(i));
+        System.out.println("PRODUCT CATEGORY:" + ArrayListClass.productCategoryDesc.get(i));
+        System.out.println("PRODUCT PRICE:" + ArrayListClass.productPrice.get(i));
+        System.out.println("PRODUCT STOCK LEVELS:" + ArrayListClass.stockLevels.get(i));
+        System.out.println("PRODUCT SUPPLIERS:" + ArrayListClass.supplierNames.get(i));
+        System.out.println("*************************************");
+         }
+         
+         double sum = 0;
+         
+for(int i = 0; i < ArrayListClass.productPrice.size(); i++)
+    sum += ArrayListClass.productPrice.get(i);
+
+
+         System.out.println("Grand Total:" + sum);
+         
+         System.out.println("Average:" + sum/ArrayListClass.productCodes.size());
+         
+         System.out.println("Product Total:" + ArrayListClass.productCodes.size());
+    }
+    
+}
+    
+class ArrayListClass {
+    
+    public static ArrayList<String> productCodes = new ArrayList<>(); 
+    public static ArrayList<String> productNames = new ArrayList<>();
+    public static ArrayList<String> stockLevels = new ArrayList<>();
+    public static ArrayList<String> supplierNames = new ArrayList<>();
+    public static ArrayList<String> actualProductWarranty = new ArrayList<>();
+    public static ArrayList<String> productCategoryDesc = new ArrayList<>();
+    public static ArrayList<Double> productPrice = new ArrayList(); 
+}
