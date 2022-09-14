@@ -1,0 +1,100 @@
+// Invocation of Constructor
+// Calling Without Usage of
+// super Keyword
+
+// Class 1
+// Super class
+class Base {
+
+	// Constructor of super class
+	Base()
+	{
+		// Print statement
+		System.out.println(
+			"Base Class Constructor Called ");
+	}
+        
+        
+}
+
+// Class 2
+// Sub class
+class Derived extends Base {
+
+	// Constructor of sub class
+	Derived()
+	{
+
+		// Print statement
+		System.out.println(
+			"Derived Class Constructor Called ");
+	}
+}
+
+// Class 3
+// Main class
+class PROG6112_Question2 {
+
+	// Main driver method
+	public static void main(String[] args)
+	{
+
+		// Creating an object of sub class
+		// inside main() method
+		//Derived d = new Derived();
+
+		// Note: Here first super class constructor will be
+		// called there after derived(sub class) constructor
+		// will be called
+                
+PROG6112_Question2 Nc = new PROG6112_Question2();
+                
+                //PROG6112_Question2.Constructors("Type:String");
+                
+Main myObj = new Main();
+                         
+Main myObj2 = new Main();
+Main myObj3 = new Main();
+                                         
+    System.out.println(myObj.x);
+    
+    System.out.println(myObj2.x2);
+    
+    System.out.println(myObj.x3);
+    
+    
+    
+Main myObj1 = new Main();  // Object 1 creating classes and sending values through those classes.
+
+String[] cars = {"This is the first VALUE IN a string","VolvoXC90", "911.CarreraTurbo", "FordCAPRI", "MazdARX7"};
+System.out.println(cars[0]);
+
+
+for(int i=0; i<cars.length; i++){
+System.out.print(cars[i]+" ");
+}
+}
+}    
+class Main {
+int x = 118;
+String x3 ="This is another main class";
+String x2 ="M4 Bmw CSL Cole Damon";
+
+//  String[] xArrayName "";
+// String[] xArrayName =("ArrayValue1","ArrayValue2" ,"ArrayValue3");
+
+class Second {
+  public static void main(String[] args) {
+Main myObj = new Main();
+System.out.println(myObj.x);
+    
+Main myObj2 = new Main();
+    
+System.out.println(myObj2.x2);
+//    String[] xArrayName =("ArrayValue1","ArrayValue2" ,"ArrayValue3");
+
+String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+System.out.println(cars[0]);
+// Outputs Volvo
+}
+}}
